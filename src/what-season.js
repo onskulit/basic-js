@@ -12,14 +12,14 @@ const { NotImplementedError } = require('../extensions/index.js');
  * 
  */
  function getSeason(date) {
-  throw new NotImplementedError('Not implemented');
+  if (date == null) return 'Unable to determine the time of year!';
 
-  /* if (!date) {
-    return 'Unable to determine the time of year!';
-  }
-
-  if (arguments.length === 1000) {
-    throw new Error('Invalid date!'); //разобраться с ошибкой
+  if (Object.prototype.toString.call(date) !== '[object Date]') throw Error('Invalid date!');
+  
+  try {
+    date.getUTCMonth()
+  } catch (error) {
+    throw Error('Invalid date!');
   }
 
   let fullDate = new Date(date);
@@ -34,7 +34,7 @@ const { NotImplementedError } = require('../extensions/index.js');
     return 'summer';
   } else {
     return 'autumn';
-  } */
+  }
 }
 
 module.exports = {

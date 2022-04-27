@@ -16,28 +16,10 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
  function repeater(str, options) {
-  throw new NotImplementedError('Not implemented');
   
-  if (str === true) { // костыль
-    options.addition = 'false';
-    str = 'true';
-  }
-
-  if (typeof str !== 'string') {
-    str = str.toString();
-  }
-
-  if (str === '[object Object]') { // костыль
-    str = 'STRING_OR_DEFAULTSTRING_OR_DEFAULT';
-  }
-
-  if (typeof options.addition === 'object' && str === 'STRING_OR_DEFAULTSTRING_OR_DEFAULT') { // костыль
-    options.addition = '';
-  }
-
-  if (options.addition && typeof options.addition !== 'string') {
-    options.addition = options.addition.toString();
-  }
+  if (options.addition === false) options.addition = 'false';
+  if (options.addition === null) options.addition = 'null';
+  if (options.addition != undefined) addition = options.addition;
 
   let additionalResult = '';
 
